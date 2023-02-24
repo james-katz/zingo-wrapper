@@ -1,0 +1,29 @@
+[package]
+name = "zingo-wrapper"
+version = "0.1.0"
+authors = ["James Katz"]
+license = "ISC"
+edition = "2018"
+exclude = ["native.node"]
+
+[lib]
+crate-type = ["cdylib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# zingolib = { path = "../../zingolib/zingolib" }
+# zingoconfig = { path = "../../zingolib/zingoconfig" }
+zingolib = { git = "https://github.com/zingolabs/zingolib/", branch = "dev" }
+zingoconfig = { git = "https://github.com/zingolabs/zingolib/", branch = "dev" }
+lazy_static = "1.4.0"
+
+[patch.crates-io]
+zcash_note_encryption = { git = "https://github.com/zingolabs/librustzcash", rev = "d66f7f70516e6da5c24008874a926d41221b1346" }
+zcash_primitives = { git = "https://github.com/zingolabs/librustzcash", rev = "d66f7f70516e6da5c24008874a926d41221b1346" }
+orchard = { git = "https://github.com/zingolabs/orchard", rev = "49874b31da4fedcb31fcfadf5ba8804bf860c4bf" }
+
+[dependencies.neon]
+version = "0.10"
+default-features = false
+features = ["napi-6"]
